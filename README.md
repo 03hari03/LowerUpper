@@ -14,7 +14,7 @@ How to run the site ?
 
 NOTE: Your system should have Nodejs installed. All npm installs have been made and node_modules folder contains all of them.
 
-Installs made(inside Lowerupper folder) :
+Installs made(inside LowerUpper folder) :
 1. npm install --save express
 2. npm install --save multer
 3. npm install --save cors
