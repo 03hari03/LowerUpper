@@ -6,6 +6,8 @@ How to run the site ?
 1. git clone https://github.com/03hari03/LowerUpper.git
 2. Goto directory LowerUpper
 3. Type in terminal to run server
+        >node app.js
+            OR
         >nodemon app.js
 4. open index.html in browser
 5. Thats all :)
