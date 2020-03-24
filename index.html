@@ -25,13 +25,26 @@
                 text-align: center;
                 font-weight: bolder;
             }
-            button {
+            .button2 {
                 background-color: rgb(100, 255, 86);
                 border: none;
                 color:rgb(0, 0, 0);
                 padding: 15px 32px;
                 text-align: center;
                 text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            .button3 {
+                background-color: rgb(100, 255, 86);
+                border: none;
+                color:rgb(0, 0, 0);
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                visibility: hidden;
                 display: inline-block;
                 font-size: 16px;
                 margin: 4px 2px;
@@ -47,15 +60,16 @@
             }
         </style> 
         <script>
-                str ={
-                    names:[],
-                    address:[]
-                }
-        function goback() {
+            str ={
+                names:[],
+                address:[]
+            }
+
+            function goback() {
                 var button = document.getElementById('btnupper'||'btnlower');
                 button.hidden = false;
                 var button2 = document.getElementById("goback");
-                button2.hidden = true;
+                button2.style.visibility="hidden";
                 var tableup = document.getElementById("wrapper");
                 tableup.hidden = true;
                 var tablelow = document.getElementById("mytable");
@@ -77,7 +91,7 @@
                 var tablelow = document.getElementById("mytable");
                 tablelow.hidden = true;
                 var button2 = document.getElementById("goback");
-                button2.hidden = false;
+                button2.style.visibility = "visible";
 
 
                 // var table = document.getElementById("mytable");
@@ -249,10 +263,10 @@
     <div id="wrapper">
     </div>    
         <br>
-        <button id="btnupper"  OnClick="convert(this.id)">ToUpper</button>
-        <button id="btnlower"  OnClick="convert(this.id)">ToLower</button>
-        <button id="goback" hidden OnClick="goback()" >Back</button
-    
+        <button class="button2" id="btnupper"  OnClick="convert(this.id)">ToUpper</button>
+        <button class="button2" id="btnlower"  OnClick="convert(this.id)">ToLower</button>
+        <br><br>
+        <button class="button3" id="goback" hidden OnClick="goback()" >Back</button> 
     </center>
     </body>
 </html>
