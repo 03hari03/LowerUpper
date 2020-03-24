@@ -1,0 +1,256 @@
+<html>
+    <head>
+        
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript"></script>  
+        <style>
+            body {
+                padding:0px;
+                margin:0px;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight:bold;
+                color:white;
+                background-color: grey;
+                scroll-behavior: smooth;
+            }
+            input {
+                    background-color:transparent;
+                    text-align: center;
+            }
+            h1 {
+                color: white;;
+            }
+            td {
+                text-align: center;
+                font-weight: bolder;
+            }
+            button {
+                background-color: rgb(100, 255, 86);
+                border: none;
+                color:rgb(0, 0, 0);
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            table,th {
+                    background-color: rgb(255, 203, 154);
+                    text-align: center;
+                    color: black;
+                    font-weight: bolder;
+                    border: 2px solid black;
+                    
+            }
+        </style> 
+        <script>
+                str ={
+                    names:[],
+                    address:[]
+                }
+        function goback() {
+                var button = document.getElementById('btnupper'||'btnlower');
+                button.hidden = false;
+                var button2 = document.getElementById("goback");
+                button2.hidden = true;
+                var tableup = document.getElementById("wrapper");
+                tableup.hidden = true;
+                var tablelow = document.getElementById("mytable");
+                tablelow.hidden = false;
+            }
+            function convert(btnpressed) {
+                if (btnpressed === 'btnupper') {
+                    var button3 = document.getElementById('btnlower');
+                    button3.hidden = false;
+                }
+                else if (btnpressed === 'btnlower') {
+                    var button3 = document.getElementById('btnupper');
+                    button3.hidden = false;
+                }
+                var tableup = document.getElementById("wrapper");
+                tableup.hidden = false;
+                var button = document.getElementById(btnpressed);
+                button.hidden = true;
+                var tablelow = document.getElementById("mytable");
+                tablelow.hidden = true;
+                var button2 = document.getElementById("goback");
+                button2.hidden = false;
+
+
+                // var table = document.getElementById("mytable");
+                // var table_len = (table.rows.length) - 1
+                // console.log(table.innerHTML);
+                for (var i = 1; i <= 10; i++) {
+                    // console.log(document.getElementById("name_row" + i).value);
+                    str.names.push(document.getElementById("name" + i).value);
+                    str.address.push(document.getElementById("addr" + i).value);
+                }
+                console.log(str);
+                if (btnpressed === 'btnupper') {
+
+                    fetch("http://localhost:3000/convertUpper/", {
+
+                        // Adding method type 
+                        method: "POST",
+
+                        // Adding body or contents to send 
+                        body: JSON.stringify({
+                            json: str
+                        }),
+
+                        // Adding headers to the request 
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8"
+                        }
+                    })
+                        .then(response => response.json())
+
+                        // Displaying results to console 
+                        .then((json) => {
+                            var names = json.names;
+                            var address = json.address;
+                            var html = "";
+                            $('#wrapper').html('<table />');
+                            html += "<tr><th>Serial Number</th><th>Name</th><th>Address</th></tr>"
+                            $('#wrapper table').append(html);
+                            for (var i = 0; i < 10; i++) {
+
+                                html = "<tr>"
+                                html += "<td>" + (parseInt(i) + parseInt(1)) + "</td>";
+                                html += "<td>" + names[i] + "</td>";
+                                html += "<td>" + address[i] + "</td>";
+
+                                html += "</tr>";
+                                $('#wrapper table').append(html);
+
+                            }
+
+                        });
+                }
+                else if (btnpressed === 'btnlower') {
+                    fetch("http://localhost:3000/convertLower/", {
+
+                        // Adding method type 
+                        method: "POST",
+
+                        // Adding body or contents to send 
+                        body: JSON.stringify({
+                            json: str
+                        }),
+
+                        // Adding headers to the request 
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8"
+                        }
+                    })
+                        .then(response => response.json())
+
+                        // Displaying results to console 
+                        .then((json) => {
+                            var names = json.names;
+                            var address = json.address;
+                            var html = "";
+                            $('#wrapper').html('<table />');
+                            html += "<tr><th>Serial Number</th><th>Name</th><th>Address</th></tr>"
+                            $('#wrapper table').append(html);
+                            for (var i = 0; i < 10; i++) {
+
+                                html = "<tr>"
+                                html += "<td>" + (parseInt(i) + parseInt(1)) + "</td>";
+                                html += "<td>" + names[i] + "</td>";
+                                html += "<td>" + address[i] + "</td>";
+
+                                html += "</tr>";
+                                $('#wrapper table').append(html);
+
+                            }
+
+                        });
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <br><br>
+        <center>
+            <br><br><br>
+            <h1>Lower and Upper</h1>
+            <br><br><br>
+        <table id="mytable">
+        <tr>
+            <th>Serial number</th>
+            <th>Name</th>
+            <th>Address</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td> <input type="text" id="name1"></td>
+           <td> <input type="text" id="addr1"></td>
+           
+        </tr>
+        <tr>
+            <td>2</td>
+            <td> <input type="text" id="name2"></td>
+           <td> <input type="text" id="addr2"></td>
+           
+        </tr>
+        <tr>
+            <td>3</td>
+            <td> <input type="text" id="name3"></td>
+           <td> <input type="text" id="addr3"></td>
+           
+        </tr>
+        <tr>
+            <td>4</td>
+            <td> <input type="text" id="name4"></td>
+           <td> <input type="text" id="addr4"></td>
+           
+        </tr>
+        <tr>
+            <td>5</td>
+            <td> <input type="text" id="name5"></td>
+           <td> <input type="text" id="addr5"></td>
+           
+        </tr>
+        <tr>
+            <td>6</td>
+            <td> <input type="text" id="name6"></td>
+           <td> <input type="text" id="addr6"></td>
+           
+        </tr>
+        <tr>
+            <td>7</td>
+            <td> <input type="text" id="name7"></td>
+           <td> <input type="text" id="addr7"></td>
+           
+        </tr>
+        <tr>
+            <td>8</td>
+            <td> <input type="text" id="name8"></td>
+           <td> <input type="text" id="addr8"></td>
+           
+        </tr>
+        <tr>
+            <td>9</td>
+            <td> <input type="text" id="name9"></td>
+           <td> <input type="text" id="addr9"></td>
+           
+        </tr>
+        <tr>
+            <td>10</td>
+            <td> <input type="text" id="name10"></td>
+           <td> <input type="text" id="addr10"></td>
+           
+        </tr>
+    </table>
+    <div id="wrapper">
+    </div>    
+        <br>
+        <button id="btnupper"  OnClick="convert(this.id)"> Show Upper</button>
+        <button id="btnlower"  OnClick="convert(this.id)"> Show Lower</button>
+        <button id="goback" hidden OnClick="goback()" >Back</button
+    
+    </center>
+    </body>
+</html>
