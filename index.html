@@ -23,7 +23,7 @@
                     background:linear-gradient(130deg,rgb(61, 61, 61),gold);
                     text-align: center;
                     font-weight: bolder;
-                    padding-block: 2%;
+                    padding-block: 1.5%;
                     color: black;
             }
             h1 {
@@ -111,7 +111,6 @@
             table {
                 background-color: black;
                 text-align: center;
-                vertical-align: middle;
                 color: black;
                 font-weight: bolder;
                 border: 2px solid black;
@@ -119,7 +118,6 @@
             th {
                 background-color: rgb(34, 31, 31);
                 text-align: center;
-                vertical-align: middle;
                 color: white;
                 font-weight: bolder;
                 border: 2px solid black;
@@ -131,7 +129,6 @@
                 background:linear-gradient(130deg,rgb(61, 61, 61),gold);
                 background-color: gold;
                 text-align: center;
-                vertical-align: middle;
                 color: black;
                 font-weight: bolder;
                 border: 2px solid black;
@@ -210,8 +207,8 @@
                             var names = json.names;
                             var address = json.address;
                             var html = "";
-                            $('#wrapper').html('<table />');
-                            html += "<tr><th>Serial Number</th><th>Name</th><th>Address</th></tr>"
+                            $('#wrapper').html('<table cellpadding="10"/>');
+                            html += "<tr><th>Serial Number</th><th>&emsp;&emsp;&emsp;&emsp;Name&emsp;&emsp;&emsp;&emsp;</th><th>&emsp;&emsp;&emsp;Address&emsp;&emsp;&emsp;</th></tr>"
                             $('#wrapper table').append(html);
                             for (var i = 0; i < 10; i++) {
 
@@ -250,8 +247,8 @@
                             var names = json.names;
                             var address = json.address;
                             var html = "";
-                            $('#wrapper').html('<table/>');
-                            html += "<tr><th>Serial Number</th><th>Name</th><th>Address</th></tr>"
+                            $('#wrapper').html('<table cellpadding="10"/>');
+                            html += "<tr><th>Serial Number</th><th>&emsp;&emsp;&emsp;&emsp;Name&emsp;&emsp;&emsp;&emsp;</th><th>&emsp;&emsp;&emsp;Address&emsp;&emsp;&emsp;</th></tr>"
                             $('#wrapper table').append(html);
                             for (var i = 0; i < 10; i++) {
 
