@@ -3,6 +3,10 @@
         <title>LowerUpper</title>
         <meta charset = "UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa:700">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
         <script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript"></script>  
         <style>
             body {
@@ -11,52 +15,129 @@
                 font-family: 'Courier New', Courier, monospace;
                 font-weight:bold;
                 color:white;
-                background-color: grey;
+                background: linear-gradient(0deg,rgba(0,0,0,1),rgba(0,0,0,0)) center center fixed;
+                background-color: gold;
                 scroll-behavior: smooth;
             }
             input {
-                    background-color:transparent;
+                    background:linear-gradient(130deg,rgb(61, 61, 61),gold);
                     text-align: center;
+                    font-weight: bolder;
+                    padding-block: 2%;
+                    color: black;
             }
             h1 {
-                color: white;;
-            }
-            td {
-                text-align: center;
+                color: black;
                 font-weight: bolder;
+                font-size: xx-large;
+                font-family: 'Courier New', Courier, monospace;
             }
+            
             .button2 {
-                background-color: rgb(100, 255, 86);
+                border-radius: 4px;
+                background:linear-gradient(90deg,gold,black);
                 border: none;
                 color:rgb(0, 0, 0);
                 padding: 15px 32px;
                 text-align: center;
-                text-decoration: none;
-                display: inline-block;
                 font-size: 16px;
+                font-weight: bolder;
                 margin: 4px 2px;
                 cursor: pointer;
+                transition: all 0.5s;
+            }
+            .button2 span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+
+            .button2 span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+            .button2:hover span {
+                padding-right: 25px;
+            }
+
+            .button2:hover span:after {
+                opacity: 1;
+                right: 0;
             }
             .button3 {
-                background-color: rgb(100, 255, 86);
+                border-radius: 4px;
+                background:linear-gradient(90deg,gold,black);
                 border: none;
                 color:rgb(0, 0, 0);
                 padding: 15px 32px;
                 text-align: center;
-                text-decoration: none;
+                font-weight: bolder;
                 visibility: hidden;
-                display: inline-block;
                 font-size: 16px;
                 margin: 4px 2px;
                 cursor: pointer;
+                transition: all 0s;
             }
-            table,th {
-                    background-color: rgb(255, 203, 154);
-                    text-align: center;
-                    color: black;
-                    font-weight: bolder;
-                    border: 2px solid black;
-                    
+            .button3 span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0s;
+            }
+
+            .button3 span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0s;
+            }
+
+            .button3:hover span {
+                padding-right: 25px;
+            }
+
+            .button3:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+            table {
+                background-color: black;
+                text-align: center;
+                vertical-align: middle;
+                color: black;
+                font-weight: bolder;
+                border: 2px solid black;
+            }
+            th {
+                background-color: rgb(34, 31, 31);
+                text-align: center;
+                vertical-align: middle;
+                color: white;
+                font-weight: bolder;
+                border: 2px solid black;
+                border-collapse: collapse;
+                padding: 10px;
+                font-size: larger;
+            }
+            td {
+                background:linear-gradient(130deg,rgb(61, 61, 61),gold);
+                background-color: gold;
+                text-align: center;
+                vertical-align: middle;
+                color: black;
+                font-weight: bolder;
+                border: 2px solid black;
+                border-collapse: collapse;
+                padding-bottom: 2px;
+                padding-right: 5px;
             }
         </style> 
         <script>
@@ -66,8 +147,10 @@
             }
 
             function goback() {
-                var button = document.getElementById('btnupper'||'btnlower');
+                var button = document.getElementById('btnupper');
                 button.hidden = false;
+                var button5 = document.getElementById('btnlower');
+                button5.hidden = false;
                 var button2 = document.getElementById("goback");
                 button2.style.visibility="hidden";
                 var tableup = document.getElementById("wrapper");
@@ -167,7 +250,7 @@
                             var names = json.names;
                             var address = json.address;
                             var html = "";
-                            $('#wrapper').html('<table />');
+                            $('#wrapper').html('<table/>');
                             html += "<tr><th>Serial Number</th><th>Name</th><th>Address</th></tr>"
                             $('#wrapper table').append(html);
                             for (var i = 0; i < 10; i++) {
@@ -190,12 +273,13 @@
     <body>
         <br><br>
         <center>
-            <br><br><br>
+            <div>
+            <br>
             <h1>Lower and Upper</h1>
-            <br><br><br>
+            <br>
         <table id="mytable">
         <tr>
-            <th>Serial number</th>
+            <th>Serial Number</th>
             <th>Name</th>
             <th>Address</th>
         </tr>
@@ -260,13 +344,16 @@
            
         </tr>
     </table>
+    
     <div id="wrapper">
     </div>    
         <br>
-        <button class="button2" id="btnupper"  OnClick="convert(this.id)">ToUpper</button>
-        <button class="button2" id="btnlower"  OnClick="convert(this.id)">ToLower</button>
+        <button class="button2" id="btnupper"  OnClick="convert(this.id)"><span>ToUpper</span></button>
+        <button class="button2" id="btnlower"  OnClick="convert(this.id)"><span>ToLower</span></button>
         <br><br>
-        <button class="button3" id="goback" hidden OnClick="goback()" >Back</button> 
+        <button class="button3" id="goback" OnClick="goback()"><span>Back</span></button>
+
     </center>
+    </div>
     </body>
 </html>
