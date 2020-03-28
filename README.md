@@ -1,6 +1,8 @@
 # LowerUpper
 API to convert to uppercase and lowercase
 
+You can check the website: https://lowerupper-c31ab.firebaseapp.com/
+
 How to run the site ?
 
 1. git clone https://github.com/03hari03/LowerUpper.git
